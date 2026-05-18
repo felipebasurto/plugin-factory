@@ -1,0 +1,7 @@
+name: summarizing-discovery-calls
+verticals: [industrial, b2b, automotive-parts, machinery]
+risk: medium
+requires_shared: [tone-of-voice, approval-policy]
+customer_facing: partial
+default_phase: 1
+pilot_friendly: true

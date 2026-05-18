@@ -1,0 +1,7 @@
+name: summarizing-support-tickets
+verticals: [industrial, post-sales, machinery]
+risk: medium
+requires_shared: [approval-policy]
+customer_facing: partial
+default_phase: 1
+pilot_friendly: true

@@ -1,0 +1,9 @@
+{
+  "name": "REPLACE-plugin-name",
+  "version": "0.1.0",
+  "description": "REPLACE one-sentence plugin description.",
+  "author": {
+    "name": "DMKINGS"
+  },
+  "keywords": ["dmkings", "workflow"]
+}

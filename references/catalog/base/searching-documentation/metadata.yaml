@@ -1,0 +1,8 @@
+name: searching-documentation
+verticals: [industrial, quality, post-sales, engineering]
+risk: low
+requires_shared: [data-boundaries]
+customer_facing: false
+default_phase: 1
+pilot_friendly: true
+note: phase 2 if RAG connector required
