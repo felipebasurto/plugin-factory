@@ -6,6 +6,10 @@ Meta-plugin: discovery notes → client plugins (Gate A skill-map, Gate B per sk
 
 **Client output** (`clients/<slug>/...`) is created in **your workspace**, not in this repo.
 
+<p align="center">
+  <img src="docs/assets/overview.svg" alt="plugin-factory overview: discovery notes flow through superskills into a client plugin in your workspace" width="920"/>
+</p>
+
 ## Install
 
 Repo: `https://github.com/felipebasurto/plugin-factory`
@@ -81,6 +85,10 @@ Shell helpers are documented in the runbook; they are not separate command files
 
 ## Repo layout
 
+<p align="center">
+  <img src="docs/assets/repo-layout.svg" alt="Repository layout: plugin-factory repo versus client workspace output" width="880"/>
+</p>
+
 ```text
 plugin-factory/                 # Claude + Cursor: use this folder as plugin-dir
 ├── .claude-plugin/             # Claude Code manifest
@@ -147,6 +155,10 @@ Nine ready-to-adapt skills in `references/catalog/base/`:
 | `writing-followups` | low | |
 
 ## Full workflow
+
+<p align="center">
+  <img src="docs/assets/pipeline.svg" alt="Pipeline from raw discovery notes through Gate A and Gate B to validate and install" width="960"/>
+</p>
 
 1. Open a **client workspace** (separate repo or folder with `clients/`).
 2. Run `/plugin-factory:super-parse-discovery` with discovery notes and a `client_slug`. Outputs `intake.md`, `process-map.md`, `skill-map.yaml` under `clients/<slug>/discovery/`.

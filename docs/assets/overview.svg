@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 320" role="img" aria-label="plugin-factory overview">
+  <defs>
+    <linearGradient id="pf-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="client-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <filter id="shadow" x="-8%" y="-8%" width="116%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="920" height="320" rx="16" fill="#f8fafc"/>
+
+  <text x="460" y="36" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="18" font-weight="700" fill="#0f172a">From discovery notes to installable client plugin</text>
+  <text x="460" y="58" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="13" fill="#64748b">Meta-plugin runs in your IDE | client output lives in your workspace</text>
+
+  <!-- Discovery input -->
+  <g filter="url(#shadow)">
+    <rect x="32" y="96" width="200" height="168" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="32" y="96" width="200" height="44" rx="14" fill="#fef3c7"/>
+    <rect x="32" y="126" width="200" height="14" fill="#fef3c7"/>
+    <text x="132" y="124" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="700" fill="#92400e">Discovery input</text>
+    <text x="52" y="156" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#475569">- Call notes / transcript</text>
+    <text x="52" y="178" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#475569">- Process Sprint docs</text>
+    <text x="52" y="200" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#475569">- Qualification summary</text>
+    <text x="52" y="234" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#94a3b8">clients/&lt;slug&gt;/discovery/raw/</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <line x1="240" y1="180" x2="288" y2="180" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- plugin-factory -->
+  <g filter="url(#shadow)">
+    <rect x="296" y="72" width="328" height="216" rx="16" fill="#ffffff" stroke="#c7d2fe" stroke-width="2"/>
+    <rect x="296" y="72" width="328" height="52" rx="16" fill="url(#pf-grad)"/>
+    <rect x="296" y="108" width="328" height="16" fill="url(#pf-grad)"/>
+    <text x="460" y="104" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffffff">plugin-factory</text>
+    <text x="460" y="140" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#64748b">3 superskills + catalog + scripts</text>
+
+    <rect x="320" y="156" width="280" height="36" rx="8" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="460" y="179" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#4338ca">super-parse-discovery</text>
+
+    <rect x="320" y="200" width="280" height="36" rx="8" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="460" y="223" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#4338ca">super-build-client-plugin</text>
+
+    <rect x="320" y="244" width="280" height="28" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+    <text x="460" y="263" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" fill="#64748b">super-create-skill | 9 base skills | validate</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <line x1="632" y1="180" x2="680" y2="180" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Client output -->
+  <g filter="url(#shadow)">
+    <rect x="688" y="96" width="200" height="168" rx="14" fill="#ffffff" stroke="#bae6fd" stroke-width="1.5"/>
+    <rect x="688" y="96" width="200" height="44" rx="14" fill="url(#client-grad)"/>
+    <rect x="688" y="126" width="200" height="14" fill="url(#client-grad)"/>
+    <text x="788" y="124" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff">Client plugin</text>
+    <text x="708" y="156" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#475569">- intake + process-map</text>
+    <text x="708" y="178" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#475569">- skill-map.yaml</text>
+    <text x="708" y="200" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#475569">- SKILL.md per workflow</text>
+    <text x="708" y="234" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#94a3b8">clients/&lt;slug&gt;/&lt;plugin&gt;/</text>
+  </g>
+
+  <!-- Platform badges -->
+  <g>
+    <rect x="300" y="296" width="88" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="344" y="312" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="600" fill="#334155">Claude</text>
+    <rect x="396" y="296" width="88" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="440" y="312" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="600" fill="#334155">Cursor</text>
+    <rect x="492" y="296" width="88" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="536" y="312" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="600" fill="#334155">Codex</text>
+    <text x="600" y="312" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#94a3b8">same repo, 3 manifests</text>
+  </g>
+</svg>
