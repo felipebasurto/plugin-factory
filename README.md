@@ -34,19 +34,22 @@ In **Add marketplace**:
 | ----- | ----- |
 | Source | `https://github.com/felipebasurto/plugin-factory` or `felipebasurto/plugin-factory` |
 | Git ref | `main` |
-| Sparse paths | **leave empty** (recommended) |
+| Sparse paths | **`.agents/plugins`** only, or **leave empty** |
 
-Do **not** use `plugins/codex` — that path does not exist. The marketplace file lives at `.agents/plugins/marketplace.json` and points to `plugins/plugin-factory/`.
+Do **not** use `plugins/codex` — that path never existed.
 
-CLI:
+If it failed before: remove the old marketplace, pull latest `main`, add again:
 
 ```bash
+codex plugin marketplace remove plugin-factory
+git pull   # in a clone, or re-add from GitHub
 codex plugin marketplace add felipebasurto/plugin-factory --ref main
+codex plugin marketplace upgrade plugin-factory
 ```
 
-Then open the plugin directory, select marketplace **Plugin Factory**, install **plugin-factory**.
+Then open the plugin directory → marketplace **Plugin Factory** → install **plugin-factory**.
 
-Private repo: ensure GitHub auth is configured in Codex before adding the marketplace.
+Repo is **public**; no auth required for clone. If you still see "Failed to add marketplace", say which app (Codex desktop vs OpenWork) and exact sparse path.
 
 ## Skills
 
@@ -65,10 +68,10 @@ plugin-factory/                 # Claude + Cursor: use this folder as plugin-dir
 ├── skills/                     # 3 superskills
 ├── references/                 # pipeline, catalog/base, templates, …
 ├── scripts/
-├── .agents/plugins/
-│   └── marketplace.json        # Codex marketplace catalog
-└── plugins/plugin-factory/     # Codex install target (synced copy)
-    └── .codex-plugin/
+└── .agents/plugins/
+    ├── marketplace.json        # Codex marketplace catalog
+    └── plugin-factory/         # Codex install target (synced copy)
+        └── .codex-plugin/
 ```
 
 After editing root `skills/` or `references/`, run `./scripts/sync-codex-plugin.sh` before committing so Codex stays in sync.

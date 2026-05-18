@@ -8,7 +8,7 @@
       "name": "plugin-factory",
       "source": {
         "source": "local",
-        "path": "./plugins/plugin-factory"
+        "path": "./.agents/plugins/plugin-factory"
       },
       "policy": {
         "installation": "AVAILABLE",
