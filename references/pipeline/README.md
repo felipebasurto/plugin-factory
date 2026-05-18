@@ -1,13 +1,13 @@
-# Discovery → Client Plugin Pipeline
+# Client Context → Plugin Pipeline
 
-Automates turning a discovery document into a client plugin with up to 10 skills, with human gates.
+Turns any client information into a ready-to-install client plugin with up to 10 skills, with human gates.
 
 Install **plugin-factory** first; run all client outputs in a separate workspace repo.
 
 ## Flow
 
 ```text
-Discovery doc
+Any client information
   → /plugin-factory:super-parse-discovery
   → skill-map.yaml          [Gate A: human approves map]
   → scaffold-client-plugin.sh (from client workspace)

@@ -1,7 +1,7 @@
 {
   "name": "plugin-factory",
   "version": "0.0.1",
-  "description": "Meta-plugin: discovery to client plugin with human gates, base skill catalog, and scaffolding.",
+  "description": "Turn any client information into a ready-to-install Claude plugin — with human gates, base skill catalog, and scaffolding.",
   "author": {
     "name": "felipebasurto"
   },

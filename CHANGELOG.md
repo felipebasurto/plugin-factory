@@ -10,7 +10,7 @@ Initial release of plugin-factory.
 
 ### Superskills
 
-- `super-parse-discovery`: turns discovery notes or transcripts into `intake.md`, `process-map.md`, and `skill-map.yaml` (max 10 skills). Requires user Gate A approval before building.
+- `super-parse-discovery`: turns any client information into `intake.md`, `process-map.md`, and `skill-map.yaml` (max 10 skills). Single entry point for all client plugin builds. Requires user Gate A approval before building.
 - `super-build-client-plugin`: orchestrates building a client Claude plugin from an approved skill-map. Auto-scaffolds the plugin shell. One skill per run by default; batch available for low-risk base skills after pilot approval (Gate B).
 - `super-create-skill`: authors, reviews, and packages a single skill or plugin from templates and best-practices. Supports platform adapters to Codex, Cursor, and OpenWork.
 
@@ -31,7 +31,7 @@ Nine ready-to-adapt base skills:
 ### Pipeline infrastructure
 
 - `skill-map.schema.yaml`: contract for `approved`, `build.mode` (`phase_1` / `mvp` / `all`), `mvp_skills`, per-skill `status` enum, `priority`, `phase`, and `risk`.
-- `references/pipeline/runbook.md`: fast path (~1 h) from discovery to installable client plugin.
+- `references/pipeline/runbook.md`: fast path (~1 h) from any client context to installable client plugin.
 - `references/pipeline/inputs.md`: accepted discovery input formats.
 - `references/delivery/discovery-intake.md`: intake template for qualification calls.
 

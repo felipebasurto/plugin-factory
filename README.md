@@ -2,12 +2,12 @@
 
 > Version 0.0.1
 
-Meta-plugin: discovery notes → client plugins (Gate A skill-map, Gate B per skill).
+Drop in any client information. Get a ready-to-install Claude plugin.
 
 **Client output** (`clients/<slug>/...`) is created in **your workspace**, not in this repo.
 
 <p align="center">
-  <img src="docs/assets/overview.svg" alt="plugin-factory overview: discovery notes flow through superskills into a client plugin in your workspace" width="920"/>
+  <img src="docs/assets/overview.svg" alt="plugin-factory overview: any client information flows through superskills into a ready-to-install client plugin in your workspace" width="920"/>
 </p>
 
 ## Install
@@ -71,13 +71,13 @@ Repo is **public**; no auth required. For background auto-updates from private f
 
 ## Skills
 
-Each workflow is a **skill** with a discoverable `description`. Invoke via slash command or natural language.
+Start with `super-parse-discovery` — it is the single entry point. The other superskills are pipeline steps invoked automatically or manually as the build progresses.
 
-| Skill | Invocation | Purpose |
-| ----- | ---------- | ------- |
-| `super-parse-discovery` | `/plugin-factory:super-parse-discovery` | Parse discovery notes → intake, process-map, skill-map (Gate A) |
-| `super-build-client-plugin` | `/plugin-factory:super-build-client-plugin` | Build client plugin from approved skill-map (Gate B per skill) |
-| `super-create-skill` | `/plugin-factory:super-create-skill` | Author a single skill or one-off plugin from templates |
+| Skill | Invocation | Role |
+| ----- | ---------- | ---- |
+| `super-parse-discovery` | `/plugin-factory:super-parse-discovery` | **Entry point.** Takes any client information → intake, process-map, skill-map ready for Gate A |
+| `super-build-client-plugin` | `/plugin-factory:super-build-client-plugin` | Pipeline step. Builds the client plugin from an approved skill-map (Gate B per skill) |
+| `super-create-skill` | `/plugin-factory:super-create-skill` | Pipeline step. Authors a single skill or one-off plugin from templates |
 
 **Catalog base skills** (`references/catalog/base/`) are reusable skill blueprints — not installed directly. Add them to the client `skill-map.yaml`, then build with `super-build-client-plugin`.
 
@@ -113,7 +113,7 @@ After editing root `skills/` or `references/`, run `./scripts/sync-codex-plugin.
 
 ## Fast path (~1 h to usable client plugin)
 
-1. Parse discovery: `/plugin-factory:super-parse-discovery`
+1. Drop in client context: `/plugin-factory:super-parse-discovery`
 2. Gate A: review `skill-map.yaml` → reply `OK skill-map`
 3. Bootstrap from client workspace:
    ```bash
@@ -157,11 +157,11 @@ Nine ready-to-adapt skills in `references/catalog/base/`:
 ## Full workflow
 
 <p align="center">
-  <img src="docs/assets/pipeline.svg" alt="Pipeline from raw discovery notes through Gate A and Gate B to validate and install" width="960"/>
+  <img src="docs/assets/pipeline.svg" alt="Pipeline from any client information through Gate A and Gate B to validate and install" width="960"/>
 </p>
 
 1. Open a **client workspace** (separate repo or folder with `clients/`).
-2. Run `/plugin-factory:super-parse-discovery` with discovery notes and a `client_slug`. Outputs `intake.md`, `process-map.md`, `skill-map.yaml` under `clients/<slug>/discovery/`.
+2. Run `/plugin-factory:super-parse-discovery` with any client information and a `client_slug`. Outputs `intake.md`, `process-map.md`, `skill-map.yaml` under `clients/<slug>/discovery/`.
 3. Review `skill-map.yaml` → reply **OK skill-map** (Gate A). Or run `new-client-plugin.sh --approve-gate-a` to patch the YAML and scaffold in one step.
 4. Run `/plugin-factory:super-build-client-plugin`. It auto-scaffolds the plugin shell if missing, then builds one skill at a time.
 5. Review each `SKILL.md` → reply **OK skill \<name\>** (Gate B). Batch available for up to 3 low-risk base skills after pilot is approved.

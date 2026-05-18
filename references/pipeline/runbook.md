@@ -1,4 +1,4 @@
-# Runbook: Discovery Day → Client Plugin
+# Runbook: Client Context → Client Plugin
 
 ## Prerequisites
 
@@ -9,7 +9,7 @@
 
 | Step | Time | Action |
 | ---- | ---- | ------ |
-| Parse discovery | 15–30 min | `super-parse-discovery` |
+| Parse client context | 15–30 min | `super-parse-discovery` |
 | Gate A | 5 min | Review skill-map → `OK skill-map` |
 | Bootstrap | 1 min | `new-client-plugin.sh --approve-gate-a` |
 | Skill 1 + Gate B | 15–25 min | `super-build-client-plugin` (pilot only) |
@@ -42,14 +42,14 @@ mkdir -p clients/<slug>/discovery/raw
 # Paste into clients/<slug>/discovery/raw/notes.md
 ```
 
-### 2. Parse discovery
+### 2. Parse client context
 
 ```text
 /plugin-factory:super-parse-discovery
 
 Client slug: <slug>
 Plugin name: <plugin-name>
-Discovery: @clients/<slug>/discovery/raw/notes.md
+Client info: @clients/<slug>/discovery/raw/notes.md  (or paste any client information directly)
 
 Produce intake.md, process-map.md, skill-map.yaml (max 10 skills).
 Set build.mode: phase_1. Map to catalog/base/. Include validating-claims if customer-facing output.

@@ -1,6 +1,6 @@
 # Pipeline Inputs
 
-## Accepted discovery sources
+## Accepted client context sources
 
 - Meeting notes (bullet points, messy OK)
 - Call transcript (partial OK)

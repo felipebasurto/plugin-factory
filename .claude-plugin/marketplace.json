@@ -1,6 +1,6 @@
 {
   "name": "plugin-factory",
-  "description": "Meta-plugin that turns discovery notes into client Claude plugins with human gates, a base skill catalog, and scaffolding scripts.",
+  "description": "Turns any client information into a ready-to-install Claude plugin — with human gates, a base skill catalog, and scaffolding scripts.",
   "owner": {
     "name": "felipebasurto"
   },
@@ -12,7 +12,7 @@
         "repo": "felipebasurto/plugin-factory",
         "ref": "main"
       },
-      "description": "Superskills and base catalog for building client plugins from discovery notes.",
+      "description": "Drop in any client context and get a ready-to-install Claude plugin.",
       "author": {
         "name": "felipebasurto"
       },

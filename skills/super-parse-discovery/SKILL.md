@@ -1,23 +1,23 @@
 ---
 name: super-parse-discovery
-description: Parses discovery call notes or transcripts into structured intake, process map, and skill-map.yaml for client plugin planning. Use when starting a new client from discovery documents, AI Process Sprint notes, or qualification call transcripts. Writes under clients slash client-slug slash discovery in the user's workspace.
+description: Turns any client information into a structured intake, process map, and skill-map.yaml ready for building a client plugin. Use when starting a new client plugin from any source — notes, emails, briefings, transcripts, documents, or pasted text. Writes under clients slash client-slug slash discovery in the user's workspace.
 ---
 
 # Super Parse Discovery
 
 ## Goal
 
-Turn a messy discovery document into three files ready for Gate A approval: `intake.md`, `process-map.md`, `skill-map.yaml` (max 10 skills).
+Turn any client information into three files ready for Gate A approval: `intake.md`, `process-map.md`, `skill-map.yaml` (max 10 skills).
 
 ## When to use
 
-- New client after discovery or Process Sprint.
-- User provides notes, transcript, or summary and a `client_slug`.
+- Starting a new client plugin from any source of client information.
+- User provides any of: call notes, email thread, briefing doc, transcript, stakeholder summary, process description, pasted text — and a `client_slug`.
 
 ## Do not use this skill when
 
 - Skill-map already approved and user wants to build plugin (use super-build-client-plugin).
-- No discovery content provided.
+- No client information provided.
 
 ## Inputs
 
@@ -25,7 +25,7 @@ Required:
 
 - `client_slug` (kebab-case).
 - `plugin_name` (kebab-case).
-- Discovery content (file path or pasted text).
+- Client information (any format: file path, pasted text, email, briefing, notes, transcript).
 
 Optional: industry hint, language (es/en).
 
