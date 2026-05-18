@@ -51,13 +51,19 @@ Then open the plugin directory → marketplace **Plugin Factory** → install **
 
 Repo is **public**; no auth required for clone. If you still see "Failed to add marketplace", say which app (Codex desktop vs OpenWork) and exact sparse path.
 
-## Skills
+## Skills (no `commands/` folder)
+
+Per [best practices](references/best-practices/01-skill-definition.md), each workflow is a **skill** with a discoverable `description`. Invoke via slash skill or natural language — do not duplicate the same workflow in `commands/`.
 
 | Skill | Invocation |
 | ----- | ---------- |
 | `super-parse-discovery` | `/plugin-factory:super-parse-discovery` |
 | `super-build-client-plugin` | `/plugin-factory:super-build-client-plugin` |
 | `super-create-skill` | `/plugin-factory:super-create-skill` |
+
+**Catalog base skills** (e.g. `documenting-design-system`) live under `references/catalog/base/`. Add them to the client `skill-map.yaml`, then build with `super-build-client-plugin`, or ask the agent to follow that catalog `SKILL.md` when brand assets are attached.
+
+Shell helpers (`new-client-plugin.sh`, `scaffold-client-plugin.sh`) are documented in the runbook — not separate command files.
 
 ## Repo layout
 

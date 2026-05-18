@@ -6,6 +6,7 @@ Rules for naming, versioning, ownership, and multi-platform delivery when using 
 
 - **Source of truth**: Claude `SKILL.md` files in the **client workspace** (inside `clients/<client-slug>/<plugin-name>/skills/`).
 - **Factory catalog**: Reusable bases under `references/catalog/base/` in the plugin-factory install (adapt per client; do not ship raw to clients).
+- **No command duplicates**: catalog workflows are invoked via `skill-map` + `super-build-client-plugin` or by referencing the catalog `SKILL.md` — not via a parallel `commands/` markdown file.
 - **Generated artifacts**: Codex, Cursor, and OpenWork copies are outputs of [../adapters/](../adapters/). Record generation date and plugin version in the target README footer.
 - **Rule**: Do not hand-edit generated SKILL bodies in platform folders without syncing back to Claude canonical.
 
@@ -14,7 +15,7 @@ Rules for naming, versioning, ownership, and multi-platform delivery when using 
 ### Skills
 
 - Format: gerund or clear action, kebab-case, max 64 chars.
-- Examples: `validating-claims`, `summarizing-discovery-calls`, `answering-rfps`.
+- Examples: `validating-claims`, `summarizing-discovery-calls`, `answering-rfps`, `documenting-design-system`.
 - Avoid: `helper`, `utils`, `assistant`, `tools`.
 
 ### Plugins

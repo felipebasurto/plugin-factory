@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Base skill `documenting-design-system`: extract tokens from PDF/Office/screenshots, write `shared/design-system.md` and client `applying-*-design-system` skill.
+- `super-parse-discovery` maps brand/UI mentions to this skill.
+- Removed `commands/` folder — workflows are skills only (see README).
+
 ## 0.2.0 — 2026-05-18
 
 - `new-client-plugin.sh` orchestrator (scaffold + Gate A + prompts).

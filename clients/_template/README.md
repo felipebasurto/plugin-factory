@@ -12,7 +12,7 @@ From your workspace root:
   --plugin-name <plugin-name>
 ```
 
-Or use the **scaffold-client-plugin** command from the plugin-factory Cursor plugin.
+Or run `/plugin-factory:super-parse-discovery` then `/plugin-factory:super-build-client-plugin` (auto-scaffolds when the plugin folder is missing).
 
 ## Layout
 

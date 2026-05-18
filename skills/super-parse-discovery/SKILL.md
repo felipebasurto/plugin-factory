@@ -58,6 +58,7 @@ Write all outputs under **`clients/<client_slug>/`** in the **user's open worksp
 - Do not set `approved: true` without explicit user confirmation.
 - Do not invent client certifications or customer names in intake; use NEEDS_CONFIRMATION.
 - Map to [../../references/catalog/base/](../../references/catalog/base/) before inventing custom skills.
+- If discovery mentions brand manual, visual identity, UI, slides templates, or marketing design: include `documenting-design-system` in skill-map (phase 1, after pilot or parallel if brand blocks other deliverables).
 
 ## Output
 

@@ -25,9 +25,10 @@ Only add if the delivery requires them:
 
 - `rules/*.mdc` for persistent coding or writing standards.
 - `agents/*.md` for specialized subagents.
-- `commands/*.md` for explicit slash commands.
 - `hooks/hooks.json` for format-on-save, audit, etc.
 - `mcp.json` for MCP servers.
+
+**Operational workflows → `skills/` only.** Do not mirror a skill in `commands/`; the skill `description` is the discovery and slash entry point ([03-descriptions-and-triggers.md](../best-practices/03-descriptions-and-triggers.md)). Add `commands/*.md` only for rare cases that are not skills (e.g. a one-line script wrapper with no procedure body).
 
 Do not add empty component folders.
 

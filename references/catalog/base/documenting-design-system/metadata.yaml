@@ -1,0 +1,17 @@
+name: documenting-design-system
+verticals: [industrial, b2b, saas, professional-services, any-branded-client]
+risk: medium
+requires_shared: []
+customer_facing: partial
+default_phase: 1
+pilot_friendly: false
+produces_artifacts:
+  - shared/design-system.md
+  - skills/applying-client-design-system/SKILL.md
+inputs:
+  - pdf
+  - docx
+  - pptx
+  - images
+  - website_screenshots
+  - figma_links_optional
