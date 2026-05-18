@@ -1,0 +1,7 @@
+name: drafting-weekly-reports
+verticals: [industrial, operations, management]
+risk: low
+requires_shared: []
+customer_facing: false
+default_phase: 1
+pilot_friendly: false

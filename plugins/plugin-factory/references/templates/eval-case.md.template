@@ -1,0 +1,24 @@
+# Eval Case: REPLACE-SCENARIO-NAME
+
+Type: trigger | non-trigger | output-contract | safety | messy-input | regression
+
+## Scenario
+
+One sentence describing what this case proves.
+
+## Input
+
+```text
+Paste realistic user message or artifact here.
+```
+
+## Expected behavior
+
+- [ ] Skill should / should not be selected.
+- [ ] Output includes sections: ...
+- [ ] No forbidden claims appear.
+- [ ] Uncertainty is flagged as: ...
+
+## Notes
+
+Optional: link to regression baseline or client-specific constraint.

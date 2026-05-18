@@ -1,0 +1,7 @@
+name: writing-followups
+verticals: [industrial, b2b, presales]
+risk: medium
+requires_shared: [tone-of-voice, approval-policy]
+customer_facing: true
+default_phase: 1
+pilot_friendly: true

@@ -1,71 +1,87 @@
 # plugin-factory
 
-Installable meta-plugin that turns discovery notes into client Claude/Cursor plugins—one approved skill at a time.
+Meta-plugin: discovery notes → client plugins (Gate A skill-map, Gate B per skill).
 
-**Client deliverables** (`clients/<slug>/...`) are created in **your project workspace**, not inside this repository.
+**Client output** (`clients/<slug>/...`) is created in **your workspace**, not in this repo.
+
+## Install (copy-paste from GitHub)
+
+Repo: `https://github.com/felipebasurto/plugin-factory`
+
+### Claude Code (repo root = plugin)
+
+```bash
+git clone https://github.com/felipebasurto/plugin-factory.git
+claude --plugin-dir ./plugin-factory
+```
+
+Reload: `/reload-plugins` → `/plugin-factory:super-build-client-plugin`
+
+### Cursor (Claude-compatible layout at repo root)
+
+```bash
+git clone https://github.com/felipebasurto/plugin-factory.git
+cp -r plugin-factory ~/.cursor/plugins/local/plugin-factory
+```
+
+Reload plugins → `@plugin-factory` or `/plugin-factory:super-parse-discovery`
+
+### Codex (marketplace from GitHub)
+
+In **Add marketplace**:
+
+| Field | Value |
+| ----- | ----- |
+| Source | `https://github.com/felipebasurto/plugin-factory` or `felipebasurto/plugin-factory` |
+| Git ref | `main` |
+| Sparse paths | **leave empty** (recommended) |
+
+Do **not** use `plugins/codex` — that path does not exist. The marketplace file lives at `.agents/plugins/marketplace.json` and points to `plugins/plugin-factory/`.
+
+CLI:
+
+```bash
+codex plugin marketplace add felipebasurto/plugin-factory --ref main
+```
+
+Then open the plugin directory, select marketplace **Plugin Factory**, install **plugin-factory**.
+
+Private repo: ensure GitHub auth is configured in Codex before adding the marketplace.
 
 ## Skills
 
-| Skill | Invocation (Cursor / Claude) |
-| ----- | ---------------------------- |
+| Skill | Invocation |
+| ----- | ---------- |
 | `super-parse-discovery` | `/plugin-factory:super-parse-discovery` |
 | `super-build-client-plugin` | `/plugin-factory:super-build-client-plugin` |
 | `super-create-skill` | `/plugin-factory:super-create-skill` |
 
-## Install from GitHub
-
-```bash
-git clone https://github.com/felipebasurto/plugin-factory.git
-cd plugin-factory
-```
-
-### Cursor
-
-```bash
-cp -r "$(pwd)" ~/.cursor/plugins/local/plugin-factory
-```
-
-Reload plugins in Cursor, then use `@plugin-factory` or slash commands above.
-
-### Claude Code
-
-```bash
-claude --plugin-dir /path/to/plugin-factory
-```
-
-Then `/reload-plugins`.
-
-### OpenWork
-
-OpenWork has no plugin manifest. Export each skill from `skills/*/SKILL.md` via [share.openworklabs.com](https://share.openworklabs.com) or install under `.opencode/skills/`. See [references/adapters/to-openwork.md](references/adapters/to-openwork.md).
-
-## Typical workflow
-
-1. Open a **client workspace** repo (with or without a `clients/` folder).
-2. Run `super-parse-discovery` with notes → review `clients/<slug>/discovery/skill-map.yaml`.
-3. Reply **OK skill-map** (Gate A).
-4. Scaffold:
-
-```bash
-/path/to/plugin-factory/scripts/scaffold-client-plugin.sh \
-  --client-slug <slug> --plugin-name <name>
-```
-
-Or use the Cursor command `scaffold-client-plugin` from this plugin.
-
-5. Run `super-build-client-plugin` for skill 1; approve each `SKILL.md` (Gate B).
-
-## Repository layout
+## Repo layout
 
 ```text
-plugin-factory/          # this repo root = plugin root
-├── skills/              # invocable superskills only
-├── references/          # pipeline, catalog, templates, adapters, best-practices
+plugin-factory/                 # Claude + Cursor: use this folder as plugin-dir
+├── .claude-plugin/
+├── .cursor-plugin/
+├── skills/                     # 3 superskills
+├── references/                 # pipeline, catalog/base, templates, …
 ├── scripts/
-└── commands/            # Cursor command wrappers
+├── .agents/plugins/
+│   └── marketplace.json        # Codex marketplace catalog
+└── plugins/plugin-factory/     # Codex install target (synced copy)
+    └── .codex-plugin/
 ```
 
-## References
+After editing root `skills/` or `references/`, run `./scripts/sync-codex-plugin.sh` before committing so Codex stays in sync.
 
-- [references/pipeline/runbook.md](references/pipeline/runbook.md)
-- [references/catalog/conventions.md](references/catalog/conventions.md)
+## Workflow
+
+1. Open a **client workspace** (separate repo or folder with `clients/`).
+2. `/plugin-factory:super-parse-discovery` → approve skill-map (Gate A).
+3. From client workspace root:
+   ```bash
+   /path/to/plugin-factory/scripts/scaffold-client-plugin.sh \
+     --client-slug <slug> --plugin-name <name>
+   ```
+4. `/plugin-factory:super-build-client-plugin` — one skill at a time (Gate B).
+
+See [references/pipeline/runbook.md](references/pipeline/runbook.md).

@@ -1,0 +1,48 @@
+# Skill map contract for discovery → plugin pipeline
+# File: clients/<client-slug>/discovery/skill-map.yaml
+
+version: "1.0"
+client_slug: ""          # kebab-case, e.g. piezas-norte-sl
+plugin_name: ""          # kebab-case, e.g. piezas-norte-workflows
+industry: ""             # e.g. automotive-parts, machinery
+language: es             # es | en
+
+# Gate A: set approved: true only after human signs off the list
+approved: false
+approved_at: null
+approved_by: null
+
+pilot:
+  skill_name: ""         # exactly one skill name from skills[]
+  rationale: ""
+
+skills:                  # max 10 entries, ordered by priority (1 = highest)
+  - id: 1
+    name: summarizing-discovery-calls   # kebab-case, matches folder name
+    source: base                        # base | custom
+    base_skill: summarizing-discovery-calls  # required if source=base
+    priority: 1
+    risk: medium                        # low | medium | high
+    pilot_candidate: true
+  - id: 2
+    name: validating-claims
+    source: base
+    base_skill: validating-claims
+    priority: 2
+    risk: medium
+    pilot_candidate: false
+    triggers:
+      - proposal review
+      - customer-facing draft
+    one_line_workflow: Review drafts against approved and forbidden claims before send.
+    phase: 1                            # 1 = build now, 2 = later (RAG/MCP)
+    status: pending                     # pending | draft | approved | excluded
+
+# Per-skill status (Gate B):
+# pending  — not started
+# draft    — SKILL.md written, awaiting human approval
+# approved — included in plugin
+# excluded — removed from scope
+
+notes: |
+  Optional free text: assumptions, open questions, skills deferred to phase 2.

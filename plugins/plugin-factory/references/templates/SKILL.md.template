@@ -1,0 +1,89 @@
+---
+name: REPLACE-WITH-SKILL-NAME
+description: REPLACE-WITH-THIRD-PERSON-DESCRIPTION-INCLUDING-WHAT-AND-WHEN-TO-USE. Use when the user mentions TRIGGER-TERM-1, TRIGGER-TERM-2, or TRIGGER-TERM-3.
+---
+
+# REPLACE Human Title
+
+## Goal
+
+One paragraph: the single outcome this skill produces when it succeeds.
+
+## When to use
+
+Use this skill when the user:
+
+- TRIGGER 1
+- TRIGGER 2
+- TRIGGER 3
+
+## Do not use this skill when
+
+- The task is unrelated to [domain].
+- The user only wants casual brainstorming without a deliverable.
+- Required inputs are missing and cannot be obtained with a clarifying question.
+
+## Inputs
+
+Required:
+
+- INPUT 1
+- INPUT 2
+
+Optional:
+
+- INPUT 3
+
+## Workflow
+
+Copy this checklist and check items off as you go:
+
+```
+Progress:
+- [ ] Step 1: ...
+- [ ] Step 2: ...
+- [ ] Step 3: ...
+```
+
+**Step 1: ...**
+
+Describe what to read, extract, or confirm.
+
+**Step 2: ...**
+
+Describe the core transformation.
+
+**Step 3: ...**
+
+Describe validation and final assembly.
+
+## Rules
+
+- Never invent facts not supported by provided sources.
+- Flag uncertainty instead of guessing.
+- Require human approval before any sensitive external action (send, publish, delete, modify systems of record).
+- Follow output format exactly.
+
+## Output
+
+Return exactly these sections:
+
+1. SECTION ONE
+2. SECTION TWO
+3. Assumptions
+4. Items requiring human review
+5. Open questions
+
+If a template exists, follow `templates/OUTPUT-FORMAT.md` exactly.
+
+## References
+
+Use only when needed (one level deep from this file):
+
+- `references/examples.md` for sample inputs and outputs.
+- `../../shared/approved-claims.md` for validated claims (plugin deliveries).
+- `../../shared/forbidden-claims.md` before customer-facing output.
+
+## Version
+
+Skill version: 0.1.0

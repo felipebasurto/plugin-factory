@@ -1,0 +1,57 @@
+# REPLACE Plugin Display Name
+
+REPLACE one-paragraph description of what this plugin does and who it is for.
+
+## Skills
+
+| Skill | Invocation | Purpose |
+| ----- | ---------- | ------- |
+| `skill-name` | `/PLUGIN-NAME:skill-name` | Short purpose |
+
+## Install (Claude Code)
+
+Local development:
+
+```bash
+claude --plugin-dir ./REPLACE-plugin-folder
+```
+
+After install, reload:
+
+```text
+/reload-plugins
+```
+
+## Client configuration
+
+Before first use, edit files in `shared/`:
+
+- `company-positioning.md`
+- `approved-claims.md`
+- `forbidden-claims.md`
+- `tone-of-voice.md`
+- `data-boundaries.md`
+- `approval-policy.md`
+
+## Recommended workflow
+
+1. Run the primary skill for your task.
+2. Run `validating-claims` on any customer-facing draft before sending.
+3. Route low-confidence items to human review per `approval-policy.md`.
+
+## Limits
+
+- REPLACE: what this plugin does not do.
+- REPLACE: data the plugin must not access without approval.
+
+## Version
+
+Plugin version: 0.1.0
+
+Canonical source: Claude `SKILL.md` in this repository.
+
+Other platforms (Codex, Cursor, OpenWork) are generated artifacts. See `skills/adapters/` and regenerate on major releases.
+
+## Support
+
+REPLACE: contact and support channel.

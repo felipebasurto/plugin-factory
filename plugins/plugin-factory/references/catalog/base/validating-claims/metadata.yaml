@@ -1,0 +1,8 @@
+name: validating-claims
+verticals: [industrial, b2b, all]
+risk: medium
+requires_shared: [approved-claims, forbidden-claims, approval-policy]
+customer_facing: false
+default_phase: 1
+pilot_friendly: false
+always_include: true

@@ -1,0 +1,20 @@
+{
+  "name": "plugin-factory",
+  "interface": {
+    "displayName": "Plugin Factory"
+  },
+  "plugins": [
+    {
+      "name": "plugin-factory",
+      "source": {
+        "source": "local",
+        "path": "./plugins/plugin-factory"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

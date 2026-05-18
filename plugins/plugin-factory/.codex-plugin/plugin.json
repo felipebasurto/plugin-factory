@@ -1,0 +1,16 @@
+{
+  "name": "plugin-factory",
+  "version": "0.1.0",
+  "description": "Meta-plugin: discovery to client plugin with human gates, base skill catalog, and scaffolding.",
+  "author": {
+    "name": "Plugin Factory"
+  },
+  "keywords": ["plugin", "skills", "discovery", "factory"],
+  "skills": "./skills/",
+  "repository": "https://github.com/felipebasurto/plugin-factory",
+  "interface": {
+    "displayName": "Plugin Factory",
+    "shortDescription": "Build client plugins from discovery notes",
+    "category": "Productivity"
+  }
+}

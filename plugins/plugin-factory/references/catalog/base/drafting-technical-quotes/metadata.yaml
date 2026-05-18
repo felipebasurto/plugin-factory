@@ -1,0 +1,7 @@
+name: drafting-technical-quotes
+verticals: [industrial, machinery, automotive-parts, manufacturing]
+risk: high
+requires_shared: [approved-claims, approval-policy]
+customer_facing: true
+default_phase: 1
+pilot_friendly: true
