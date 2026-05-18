@@ -57,12 +57,12 @@ Read `clients/<client_slug>/discovery/skill-map.yaml`. If `approved: false`, sto
 If `clients/<client_slug>/<plugin_name>/` is missing, **run** (do not only tell the user):
 
 ```bash
-plugin-factory/scripts/scaffold-client-plugin.sh \
+"${CLAUDE_PLUGIN_ROOT}"/scripts/scaffold-client-plugin.sh \
   --client-slug <slug> --plugin-name <name> \
   --workspace-root <workspace-root>
 ```
 
-Use the workspace root where `clients/` lives. Resolve `plugin-factory` from the installed plugin path or ask once if unknown.
+Use the workspace root where `clients/` lives.
 
 Then draft `shared/` from intake + process-map + discovery notes:
 
@@ -106,7 +106,7 @@ When all in-scope skills for current `build.mode` are `approved` or `excluded`:
 - Run validation mentally per [../../references/best-practices/08-review-checklist.md](../../references/best-practices/08-review-checklist.md).
 - Suggest:
   ```bash
-  plugin-factory/scripts/validate-client-plugin.sh --client-slug <slug> --plugin-name <name>
+  "${CLAUDE_PLUGIN_ROOT}"/scripts/validate-client-plugin.sh --client-slug <slug> --plugin-name <name>
   claude --plugin-dir ./clients/<slug>/<plugin_name>
   ```
 

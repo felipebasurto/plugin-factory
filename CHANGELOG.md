@@ -1,21 +1,59 @@
 # Changelog
 
+All notable changes to plugin-factory are documented here.
+
 ## Unreleased
 
-- Base skill `documenting-design-system`: extract tokens from PDF/Office/screenshots, write `shared/design-system.md` and client `applying-*-design-system` skill.
-- `super-parse-discovery` maps brand/UI mentions to this skill.
-- Removed `commands/` folder — workflows are skills only (see README).
+## 0.0.1 — 2026-05-18
 
-## 0.2.0 — 2026-05-18
+Initial release of plugin-factory.
 
-- `new-client-plugin.sh` orchestrator (scaffold + Gate A + prompts).
-- `validate-client-plugin.sh` for skill-map and plugin tree.
-- `build.mode` / `mvp_skills` in skill-map schema.
-- `super-build-client-plugin` v1.1: auto-scaffold, phase_1/mvp scope, Gate B tiers, shared/ drafting.
-- `new-client-plugin` Cursor command; runbook fast path.
+### Superskills
 
-## 0.1.0 — 2026-05-18
+- `super-parse-discovery`: turns discovery notes or transcripts into `intake.md`, `process-map.md`, and `skill-map.yaml` (max 10 skills). Requires user Gate A approval before building.
+- `super-build-client-plugin`: orchestrates building a client Claude plugin from an approved skill-map. Auto-scaffolds the plugin shell. One skill per run by default; batch available for low-risk base skills after pilot approval (Gate B).
+- `super-create-skill`: authors, reviews, and packages a single skill or plugin from templates and best-practices. Supports platform adapters to Codex, Cursor, and OpenWork.
 
-- Initial meta-plugin: super-parse-discovery, super-build-client-plugin, super-create-skill.
-- Bundled references: pipeline, catalog/base, templates, adapters, best-practices.
-- Scaffold script writes client plugins to the active workspace (not inside this repo).
+### Base skill catalog (`references/catalog/base/`)
+
+Nine ready-to-adapt base skills:
+
+- `answering-rfps`
+- `documenting-design-system` (SKILL.md v1.0.0, tests, templates; `super-parse-discovery` maps brand/UI mentions to this skill automatically)
+- `drafting-technical-quotes`
+- `drafting-weekly-reports`
+- `searching-documentation`
+- `summarizing-discovery-calls`
+- `summarizing-support-tickets`
+- `validating-claims` (full test suite: 3 trigger, 2 non-trigger, 2 output-contract, 2 safety cases)
+- `writing-followups`
+
+### Pipeline infrastructure
+
+- `skill-map.schema.yaml`: contract for `approved`, `build.mode` (`phase_1` / `mvp` / `all`), `mvp_skills`, per-skill `status` enum, `priority`, `phase`, and `risk`.
+- `references/pipeline/runbook.md`: fast path (~1 h) from discovery to installable client plugin.
+- `references/pipeline/inputs.md`: accepted discovery input formats.
+- `references/delivery/discovery-intake.md`: intake template for qualification calls.
+
+### Scripts
+
+- `scripts/scaffold-client-plugin.sh`: creates empty client plugin tree under `clients/<slug>/<plugin-name>/`.
+- `scripts/new-client-plugin.sh`: orchestrator — scaffold + optional Gate A YAML patch + next-step prompts.
+- `scripts/validate-client-plugin.sh`: checks skill-map consistency and plugin directory structure.
+- `scripts/sync-codex-plugin.sh`: syncs root `skills/` and `references/` into `.agents/plugins/plugin-factory/` for Codex installs.
+
+### Templates and standards
+
+- `references/templates/SKILL.md.template`: canonical skill authoring template.
+- `references/templates/client-pack/`: six shared-pack files (`approved-claims`, `forbidden-claims`, `company-positioning`, `tone-of-voice`, `data-boundaries`, `approval-policy`).
+- `references/templates/plugin-claude/`, `plugin-cursor/`, `plugin-codex/`: per-platform plugin stubs with manifest and README.
+- `references/best-practices/01` through `12` + `sources.md`: full authoring standards for skill definition, structure, descriptions, progressive disclosure, testing, anti-patterns, review checklist, and platform packaging.
+- `references/adapters/to-codex.md`, `to-cursor.md`, `to-openwork.md`: step-by-step platform adaptation guides.
+
+### Multi-platform manifests and marketplaces
+
+- `.claude-plugin/plugin.json`: Claude Code manifest with `homepage`, `repository`, and `license` fields.
+- `.claude-plugin/marketplace.json`: Claude Code marketplace catalog (spec-compliant: `owner` required, `source: github` pointing to `felipebasurto/plugin-factory`). Users add with `/plugin marketplace add felipebasurto/plugin-factory` and install with `/plugin install plugin-factory@plugin-factory`.
+- `.cursor-plugin/plugin.json`: Cursor manifest with `homepage`, `repository`, and `license` fields.
+- `.agents/plugins/plugin-factory/.codex-plugin/plugin.json`: Codex plugin manifest.
+- `.agents/plugins/marketplace.json`: Codex marketplace catalog using `source: git-subdir` pointing to `.agents/plugins/plugin-factory` in `felipebasurto/plugin-factory` on `main`. Codex users always pull the latest committed state from GitHub — no local path required on the consumer side.

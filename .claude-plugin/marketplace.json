@@ -8,9 +8,8 @@
     {
       "name": "plugin-factory",
       "source": {
-        "source": "git-subdir",
-        "url": "felipebasurto/plugin-factory",
-        "path": ".agents/plugins/plugin-factory",
+        "source": "github",
+        "repo": "felipebasurto/plugin-factory",
         "ref": "main"
       },
       "description": "Superskills and base catalog for building client plugins from discovery notes.",

@@ -50,7 +50,7 @@ Write all outputs under **`clients/<client_slug>/`** in the **user's open worksp
    - **Always set** `build.mode: phase_1` unless user requests `mvp` or `all`.
    - If discovery is hypothetical, add `build.mvp_skills` with pilot + `validating-claims` in notes.
 6. Stop. Tell user to review skill-map and reply **OK skill-map** for Gate A, or run:
-   `plugin-factory/scripts/new-client-plugin.sh --client-slug <slug> --plugin-name <name> --approve-gate-a`
+   `"${CLAUDE_PLUGIN_ROOT}"/scripts/new-client-plugin.sh --client-slug <slug> --plugin-name <name> --approve-gate-a`
 
 ## Rules
 

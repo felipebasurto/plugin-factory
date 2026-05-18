@@ -25,7 +25,7 @@ Target MVP: **pilot skill + validating-claims** with `build.mode: phase_1` or `m
 From client workspace root:
 
 ```bash
-/path/to/plugin-factory/scripts/new-client-plugin.sh \
+"${CLAUDE_PLUGIN_ROOT}"/scripts/new-client-plugin.sh \
   --client-slug <slug> \
   --plugin-name <plugin-name> \
   --approve-gate-a
@@ -82,7 +82,7 @@ After **OK skill &lt;name&gt;**, repeat for next skill or **OK skills 2-3** for 
 ### 5. Validate and install
 
 ```bash
-/path/to/plugin-factory/scripts/validate-client-plugin.sh \
+"${CLAUDE_PLUGIN_ROOT}"/scripts/validate-client-plugin.sh \
   --client-slug <slug> --plugin-name <plugin-name>
 
 claude --plugin-dir ./clients/<slug>/<plugin-name>

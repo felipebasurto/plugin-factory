@@ -37,21 +37,21 @@ Invoke as `/plugin-factory:<skill-name>` in Cursor or Claude Code.
 From the **client workspace root** after Gate A:
 
 ```bash
-/path/to/plugin-factory/scripts/new-client-plugin.sh \
+"${CLAUDE_PLUGIN_ROOT}"/scripts/new-client-plugin.sh \
   --client-slug <slug> --plugin-name <plugin-name> --approve-gate-a
 ```
 
 Or scaffold only:
 
 ```bash
-/path/to/plugin-factory/scripts/scaffold-client-plugin.sh \
+"${CLAUDE_PLUGIN_ROOT}"/scripts/scaffold-client-plugin.sh \
   --client-slug <slug> --plugin-name <plugin-name>
 ```
 
 Validate before handover:
 
 ```bash
-/path/to/plugin-factory/scripts/validate-client-plugin.sh \
+"${CLAUDE_PLUGIN_ROOT}"/scripts/validate-client-plugin.sh \
   --client-slug <slug> --plugin-name <plugin-name>
 ```
 
