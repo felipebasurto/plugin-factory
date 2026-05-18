@@ -2,18 +2,40 @@
 
 ## Prerequisites
 
-- **plugin-factory** installed (Cursor: `~/.cursor/plugins/local/plugin-factory` or Claude `--plugin-dir`).
-- A **client workspace** repo open (where `clients/` will be created).
+- **plugin-factory** installed (Cursor, Claude `--plugin-dir`, or Codex marketplace).
+- A **client workspace** open (where `clients/` will be created).
 
-## Before the meeting
+## Fast path (~1 h to MVP plugin)
 
-- Plan to paste notes into `clients/<slug>/discovery/raw/notes.md` in the client workspace.
+| Step | Time | Action |
+| ---- | ---- | ------ |
+| Parse discovery | 15–30 min | `super-parse-discovery` |
+| Gate A | 5 min | Review skill-map → `OK skill-map` |
+| Bootstrap | 1 min | `new-client-plugin.sh --approve-gate-a` |
+| Skill 1 + Gate B | 15–25 min | `super-build-client-plugin` (pilot only) |
+| Skill 2 + Gate B | 15 min | `validating-claims` |
+| **MVP usable** | **~1 h** | `validate-client-plugin.sh` + install |
+| Rest of phase 1 | +1–2 h | optional same day |
+| Phase 2 skills | later | when data/RAG ready |
 
-## After discovery (same day or next morning)
+Target MVP: **pilot skill + validating-claims** with `build.mode: phase_1` or `mvp`.
+
+## One-command bootstrap (after Gate A)
+
+From client workspace root:
+
+```bash
+/path/to/plugin-factory/scripts/new-client-plugin.sh \
+  --client-slug <slug> \
+  --plugin-name <plugin-name> \
+  --approve-gate-a
+```
+
+Creates plugin shell if missing, approves skill-map, prints next Codex prompt.
+
+## Step by step
 
 ### 1. Save raw notes
-
-In the **client workspace**:
 
 ```bash
 mkdir -p clients/<slug>/discovery/raw
@@ -22,8 +44,6 @@ mkdir -p clients/<slug>/discovery/raw
 
 ### 2. Parse discovery
 
-In Cursor or Claude Code:
-
 ```text
 /plugin-factory:super-parse-discovery
 
@@ -31,70 +51,52 @@ Client slug: <slug>
 Plugin name: <plugin-name>
 Discovery: @clients/<slug>/discovery/raw/notes.md
 
-Produce intake.md, process-map.md, and skill-map.yaml (max 10 skills).
-Map to references/catalog/base/ first. Include validating-claims if any customer-facing output.
+Produce intake.md, process-map.md, skill-map.yaml (max 10 skills).
+Set build.mode: phase_1. Map to catalog/base/. Include validating-claims if customer-facing output.
 ```
 
-### 3. Gate A — approve skill map
+### 3. Gate A
 
 Review `clients/<slug>/discovery/skill-map.yaml`:
 
-- Are these the right 6-10 workflows?
-- Is exactly one `pilot_candidate: true`?
-- Any skill marked `phase: 2` for RAG/MCP?
+- Right workflows and priorities?
+- Exactly one `pilot_candidate: true`?
+- `build.mode` correct (`phase_1` for fast path)?
+- Phase 2 for RAG-heavy items?
 
-Reply: **"OK skill-map"** and set `approved: true` in the file (or ask the agent to set it).
+Reply **OK skill-map** or run `new-client-plugin.sh ... --approve-gate-a`.
 
-### 4. Scaffold plugin shell
-
-From the **client workspace root**:
-
-```bash
-~/.cursor/plugins/local/plugin-factory/scripts/scaffold-client-plugin.sh \
-  --client-slug <slug> \
-  --plugin-name <plugin-name>
-```
-
-Or use the Cursor command **scaffold-client-plugin** from plugin-factory.
-
-### 5. Build skills one by one (Gate B)
+### 4. Build (agent auto-scaffolds)
 
 ```text
 /plugin-factory:super-build-client-plugin
 
 Client slug: <slug>
 Plugin name: <plugin-name>
-skill-map is approved.
-
-Generate ONLY skill id 1 from the map. Stop for my approval on SKILL.md.
+skill-map approved. Respect build.mode. Scaffold if missing.
+Generate ONLY the next pending in-scope skill. STOP for SKILL.md approval.
 ```
 
-After each **"OK skill N"**, ask for skill N+1.
+After **OK skill &lt;name&gt;**, repeat for next skill or **OK skills 2-3** for batch (low-risk base only, max 3).
 
-### 6. Install and smoke test
+### 5. Validate and install
 
 ```bash
+/path/to/plugin-factory/scripts/validate-client-plugin.sh \
+  --client-slug <slug> --plugin-name <plugin-name>
+
 claude --plugin-dir ./clients/<slug>/<plugin-name>
 ```
 
-```text
-/reload-plugins
-/<plugin-name>:<first-skill>
-```
-
-### 7. Handover
-
-Use your org's delivery checklist for claims review and client sign-off.
-
-## Time budget (realistic)
+## Time budget (full map)
 
 | Step | Time |
 | ---- | ---- |
-| Parse discovery | 15-30 min |
-| Gate A review | 10 min |
-| Scaffold | 2 min |
-| Per skill (draft + Gate B) | 15-25 min each |
-| 8 skills | ~2-3 hours agent-assisted |
-| README + handover | 30 min |
+| Parse discovery | 15–30 min |
+| Gate A | 5–10 min |
+| Scaffold | 1 min (automatic in build) |
+| Per skill (draft + Gate B) | 15–25 min |
+| 8 skills | ~2–3 h |
+| Handover | 30 min |
 
-Do not promise 10 perfect skills in 30 minutes total.
+Do not promise 10 perfect skills in 30 minutes.

@@ -47,7 +47,10 @@ Write all outputs under **`clients/<client_slug>/`** in the **user's open worksp
    - Include `validating-claims` if any skill produces customer-facing output.
    - Mark RAG-heavy workflows `phase: 2`.
    - Set `approved: false` and all skill `status: pending`.
-6. Stop. Tell user to review skill-map and reply **OK skill-map** for Gate A.
+   - **Always set** `build.mode: phase_1` unless user requests `mvp` or `all`.
+   - If discovery is hypothetical, add `build.mvp_skills` with pilot + `validating-claims` in notes.
+6. Stop. Tell user to review skill-map and reply **OK skill-map** for Gate A, or run:
+   `plugin-factory/scripts/new-client-plugin.sh --client-slug <slug> --plugin-name <name> --approve-gate-a`
 
 ## Rules
 
@@ -58,7 +61,7 @@ Write all outputs under **`clients/<client_slug>/`** in the **user's open worksp
 
 ## Output
 
-Return paths written and summary table: skill name, source, priority, pilot_candidate.
+Return paths written and summary table: skill name, source, priority, pilot_candidate, phase.
 
 ## References
 
@@ -68,4 +71,4 @@ Return paths written and summary table: skill name, source, priority, pilot_cand
 
 ## Version
 
-Superskill version: 1.0.0
+Superskill version: 1.1.0

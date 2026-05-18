@@ -16,6 +16,14 @@ pilot:
   skill_name: ""         # exactly one skill name from skills[]
   rationale: ""
 
+# Controls what super-build-client-plugin constructs before phase 2 / full map
+build:
+  mode: phase_1            # phase_1 | mvp | all
+  # phase_1: only skills with phase: 1 (default, fastest path to usable plugin)
+  # mvp: only mvp_skills list (or pilot + validating-claims if list empty)
+  # all: every non-excluded skill in the map (up to 10)
+  mvp_skills: []           # e.g. [summarizing-discovery-calls, validating-claims]
+
 skills:                  # max 10 entries, ordered by priority (1 = highest)
   - id: 1
     name: summarizing-discovery-calls   # kebab-case, matches folder name

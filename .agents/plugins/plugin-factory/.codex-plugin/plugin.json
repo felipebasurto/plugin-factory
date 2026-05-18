@@ -1,6 +1,6 @@
 {
   "name": "plugin-factory",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Meta-plugin: discovery to client plugin with human gates, base skill catalog, and scaffolding.",
   "author": {
     "name": "Plugin Factory"

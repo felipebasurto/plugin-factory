@@ -32,12 +32,26 @@ Invoke as `/plugin-factory:<skill-name>` in Cursor or Claude Code.
 - [skill-map.schema.yaml](skill-map.schema.yaml) — skill-map contract
 - [runbook.md](runbook.md) — step-by-step for a client day
 
-## Scaffold script
+## Bootstrap (recommended)
 
-From the **client workspace root**:
+From the **client workspace root** after Gate A:
 
 ```bash
-~/.cursor/plugins/local/plugin-factory/scripts/scaffold-client-plugin.sh \
+/path/to/plugin-factory/scripts/new-client-plugin.sh \
+  --client-slug <slug> --plugin-name <plugin-name> --approve-gate-a
+```
+
+Or scaffold only:
+
+```bash
+/path/to/plugin-factory/scripts/scaffold-client-plugin.sh \
+  --client-slug <slug> --plugin-name <plugin-name>
+```
+
+Validate before handover:
+
+```bash
+/path/to/plugin-factory/scripts/validate-client-plugin.sh \
   --client-slug <slug> --plugin-name <plugin-name>
 ```
 
