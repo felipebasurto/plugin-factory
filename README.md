@@ -69,6 +69,15 @@ codex plugin marketplace upgrade plugin-factory
 
 Repo is **public**; no auth required. For background auto-updates from private forks set `GITHUB_TOKEN` in your shell environment.
 
+**Using the plugin in Codex:** type `@plugin-factory` to invoke a skill explicitly, or describe the task and let Codex pick the right skill automatically.
+
+To disable without uninstalling, set `enabled = false` in `~/.codex/config.toml` and restart Codex:
+
+```toml
+[plugins."plugin-factory@plugin-factory"]
+enabled = false
+```
+
 ## Skills
 
 Start with `super-parse-discovery` — it is the single entry point. The other superskills are pipeline steps invoked automatically or manually as the build progresses.

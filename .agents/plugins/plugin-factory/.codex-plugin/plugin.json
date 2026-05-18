@@ -8,6 +8,16 @@
   "homepage": "https://github.com/felipebasurto/plugin-factory",
   "repository": "https://github.com/felipebasurto/plugin-factory",
   "license": "MIT",
-  "keywords": ["plugin", "skills", "discovery", "factory"],
-  "skills": "./skills/"
+  "keywords": ["plugin", "skills", "client", "factory"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Plugin Factory",
+    "shortDescription": "Drop in any client context. Get a ready-to-install Claude plugin.",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": [
+      "Use Plugin Factory to build a client plugin from these notes.",
+      "Use Plugin Factory to turn this briefing into a Claude plugin."
+    ]
+  }
 }
